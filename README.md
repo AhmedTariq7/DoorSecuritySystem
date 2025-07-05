@@ -31,10 +31,6 @@ Custom libraries: BIT_MATH.h, STD_TYPE.h, DIO_interface.h, LED_interface.h, LCD_
 
 Programming Tool: AVR programmer (e.g., USBasp) for flashing the microcontroller.
 
-Installation
-
-Clone the Repository:git clone https://github.com/yourusername/door-security-system.git
-
 
 Configure Hardware:
 Connect the LCD, keypad, LEDs, buzzer, and push button to the specified AVR ports (refer to APP.c for pin assignments).
@@ -55,7 +51,6 @@ Password Entry:
 The LCD displays "Enter Password".
 Enter a 4-digit password using the keypad.
 Each digit is displayed briefly, then replaced with a dot for security.
-Press the confirmation button (PORTB PIN0) to submit the password.
 
 
 Authentication:
@@ -63,8 +58,8 @@ If the password matches {1, 2, 3, 4}, the LCD displays "Welcome", and the system
 If incorrect, an LED turns off, and the LCD shows "Wrong Password".
 After three failed attempts, the system enters alert mode, flashing LEDs and sounding the buzzer indefinitely.
 
-
 Reset: To retry after a wrong password (before three attempts), re-enter the password. After three failed attempts, a system reset is required.
+
 
 File Structure
 
@@ -84,22 +79,9 @@ LCD/LCD_interface.h, LCD_config.h: LCD control and configuration.
 KEYPAD/KEYPAD_interface.h: Keypad control functions.
 
 
-
-Notes
-
-The default password is {1, 2, 3, 4} (hardcoded in APP.c). Modify the password array in the check() function to change it.
-The system uses a 16 MHz clock frequency (F_CPU 16000000UL). Adjust if using a different frequency.
-Ensure proper connections for the LCD, keypad, LEDs, and buzzer to avoid hardware issues.
-The alert mode (after three failed attempts) runs indefinitely; a hardware reset is required to restart.
-
 Future Improvements
 
-Add EEPROM storage for a configurable password.
-Implement a timeout for password entry.
+Adding EEPROM storage for a configurable password.
+Implementing a timeout for password entry.
 Add a mechanism to exit alert mode without a full reset.
 Support multiple user passwords or admin override.
-
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
-Contributing
-Contributions are welcome! Please submit a pull request or open an issue for suggestions or bug reports.
